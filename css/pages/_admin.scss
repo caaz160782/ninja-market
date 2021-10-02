@@ -1,0 +1,91 @@
+.admin-header {
+ background-color: $rojoNinja;
+ padding: 28px 56px;
+
+ .admin-header-intro {
+     padding: 12px 28px;
+    background: #1A1A1A;
+    box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    color: $white;
+    p {
+        margin: 0 0 0 170px;
+    }
+ }
+}
+
+.admin-main {
+    margin-top: 56px;
+  form.form {
+    border: 1px solid #EEEEEE;
+    border-radius: 16px;
+    padding: 16px;
+    .added-image {
+        background: #FFFFFF;
+        box-shadow: 0px 12px 24px 6px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 24px;
+
+        .wrapper {
+            position: relative;
+            .upload-image {
+                background: #CA2128;
+                border-radius: 8px;
+                color: $white;
+                position: absolute;
+                left: 0;
+                top: 0;
+                height:100%;
+                width: 160px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            input {
+                padding-left:164px;
+            }
+        }
+    }
+    .added-product {
+        filter: drop-shadow(0px 8px 16px rgba(200, 123, 77, 0.24));
+        background: #1492E6;
+        border-radius: 8px;
+        text-transform: uppercase;
+        padding: 6px;
+        border: none;
+    }
+    .edit-product {
+        background: #ADBBC9;
+        border-radius: 8px;
+        text-transform: uppercase;
+        padding: 6px;
+        border: none;
+    }
+  }
+  .preview-card {
+    padding: 31px 42px;
+    background: #FFFFFF;
+    box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .wrapper-image-munko {
+      width: 135px;
+      height: 214px;
+      .img-munko {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  } 
+  
+  .wrapper-table {
+    padding: 32px 24px;
+    border: 1px solid #EEEEEE;
+    border-radius: 16px; 
+  }
+}

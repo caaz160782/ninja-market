@@ -1,0 +1,10 @@
+@import "./variables";
+@import "./mixins";
+@import "./animations";
+@import "./utilities";
+@import "./base";
+
+@import "./components/_card-anime.scss";
+
+@import "./pages/admin";
+@import "./pages/home";

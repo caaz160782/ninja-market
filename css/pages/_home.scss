@@ -1,0 +1,17 @@
+.home {
+    background-color: $rojoNinja;
+    color: $white;
+}
+
+.footer {
+    background: linear-gradient(180deg, #000000 0%, #222222 100%);
+    color: $white;
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        color: $white;
+    }
+}

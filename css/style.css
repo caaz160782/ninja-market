@@ -1,0 +1,297 @@
+@-webkit-keyframes pulse {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+
+.btn-primary {
+  background: #1492E6;
+  border-radius: 16px;
+}
+
+.btn-danger {
+  border-radius: 16px;
+}
+
+.form-control {
+  border-radius: 8px;
+}
+
+.form-check-input:checked {
+  background-color: #CA2128;
+  border-color: #CA2128;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.card-anime {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  padding: 24px 16px 16px 16px;
+  color: #1A1A1A;
+  width: 315px;
+}
+
+.card-anime .card-anime-header .img-munko {
+  -webkit-filter: drop-shadow(0px 3.53939px 44.2424px rgba(0, 0, 0, 0.3));
+          filter: drop-shadow(0px 3.53939px 44.2424px rgba(0, 0, 0, 0.3));
+}
+
+.card-anime .card-anime-header .sizes-munkos p {
+  margin-left: 8px;
+}
+
+.card-anime .card-anime-header .sizes-munkos p span {
+  font-size: 32px;
+}
+
+.card-anime .card-anime-header .sizes-munkos .large, .card-anime .card-anime-header .sizes-munkos .medium, .card-anime .card-anime-header .sizes-munkos .small {
+  -webkit-filter: drop-shadow(0px 4px 0px #EBEBEB);
+          filter: drop-shadow(0px 4px 0px #EBEBEB);
+  background: #FAFAFA;
+  border-radius: 12px;
+}
+
+.card-anime .card-anime-header .sizes-munkos .large {
+  color: #42CBAA;
+}
+
+.card-anime .card-anime-header .sizes-munkos .medium {
+  color: #F66C45;
+}
+
+.card-anime .card-anime-header .sizes-munkos .small {
+  color: #FD8C8D;
+}
+
+.card-anime .card-anime-body h3 {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 111%;
+}
+
+.card-anime .card-anime-body p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 111%;
+  color: #5C5C5C;
+}
+
+.card-anime .card-anime-body h4 span {
+  color: #5C5C5C;
+}
+
+.card-anime .card-anime-footer .heart {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 4px 12px rgba(26, 26, 26, 0.12);
+          box-shadow: 0px 4px 12px rgba(26, 26, 26, 0.12);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.admin-header {
+  background-color: #CA2128;
+  padding: 28px 56px;
+}
+
+.admin-header .admin-header-intro {
+  padding: 12px 28px;
+  background: #1A1A1A;
+  -webkit-box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  color: #fff;
+}
+
+.admin-header .admin-header-intro p {
+  margin: 0 0 0 170px;
+}
+
+.admin-main {
+  margin-top: 56px;
+}
+
+.admin-main form.form {
+  border: 1px solid #EEEEEE;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.admin-main form.form .added-image {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 12px 24px 6px rgba(0, 0, 0, 0.08);
+          box-shadow: 0px 12px 24px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.admin-main form.form .added-image .wrapper {
+  position: relative;
+}
+
+.admin-main form.form .added-image .wrapper .upload-image {
+  background: #CA2128;
+  border-radius: 8px;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 160px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.admin-main form.form .added-image .wrapper input {
+  padding-left: 164px;
+}
+
+.admin-main form.form .added-product {
+  -webkit-filter: drop-shadow(0px 8px 16px rgba(200, 123, 77, 0.24));
+          filter: drop-shadow(0px 8px 16px rgba(200, 123, 77, 0.24));
+  background: #1492E6;
+  border-radius: 8px;
+  text-transform: uppercase;
+  padding: 6px;
+  border: none;
+}
+
+.admin-main form.form .edit-product {
+  background: #ADBBC9;
+  border-radius: 8px;
+  text-transform: uppercase;
+  padding: 6px;
+  border: none;
+}
+
+.admin-main .preview-card {
+  padding: 31px 42px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.08);
+          box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.admin-main .preview-card .wrapper-image-munko {
+  width: 135px;
+  height: 214px;
+}
+
+.admin-main .preview-card .wrapper-image-munko .img-munko {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.admin-main .wrapper-table {
+  padding: 32px 24px;
+  border: 1px solid #EEEEEE;
+  border-radius: 16px;
+}
+
+.home {
+  background-color: #CA2128;
+  color: #fff;
+}
+
+.footer {
+  background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#222222));
+  background: linear-gradient(180deg, #000000 0%, #222222 100%);
+  color: #fff;
+  padding: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer a {
+  color: #fff;
+}
+/*# sourceMappingURL=style.css.map */

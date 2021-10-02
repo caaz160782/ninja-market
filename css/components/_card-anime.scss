@@ -1,0 +1,69 @@
+.card-anime {
+    background-color: $white;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    padding: 24px 16px 16px 16px;
+    color: $color-font;
+    width: 315px;
+
+    .card-anime-header {
+        .img-munko {
+            filter: drop-shadow(0px 3.53939px 44.2424px rgba(0, 0, 0, 0.3));
+        }
+        .sizes-munkos {
+            p {
+                margin-left: 8px;
+                span {
+                    font-size: 32px;
+                }
+            }
+            .large, .medium, .small {
+                filter: drop-shadow(0px 4px 0px #EBEBEB);
+                background: #FAFAFA;
+                border-radius: 12px;
+            }
+            .large {
+                color: #42CBAA;
+            }
+            .medium {
+                color: #F66C45;
+
+            }
+            .small {
+                color: #FD8C8D;
+            }
+        }
+    }
+    .card-anime-body{
+        h3 {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 111%;
+        }
+        p {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 111%;
+            color: $gray-400;
+        }
+        h4 span {
+            color: $gray-400;
+        }
+    } 
+    .card-anime-footer {
+        .heart {
+            background-color: $white;
+            box-shadow: 0px 4px 12px rgba(26, 26, 26, 0.12);
+            border-radius: 8px; 
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

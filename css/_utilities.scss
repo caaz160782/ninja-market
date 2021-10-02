@@ -1,0 +1,22 @@
+.btn-primary {
+    background: #1492E6;
+    border-radius: 16px; 
+}
+.btn-danger {
+    border-radius: 16px; 
+}
+
+.form-control {
+    border-radius: 8px;
+}
+
+.form-check-input:checked {
+    background-color: $rojoNinja;
+    border-color: $rojoNinja;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
