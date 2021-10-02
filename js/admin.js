@@ -85,6 +85,7 @@ const putInfo= (idInputFrm,idinfo)=>{
        document.getElementById(idinfo).textContent = valueInput
    })
 }
+
 putInfo("name-Product","name-prod")
 putInfo("priceP","price-prod")
 putInfo("floatingTextarea2","desc-prod")
