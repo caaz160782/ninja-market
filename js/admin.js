@@ -71,7 +71,7 @@ document.getElementById("btnSubmit").addEventListener("click", (event)=> {
     })    
     //console.log(objectSize)
     //newProduct.sizes=objectSize
-    newProduct={...newProduct,sizes=objectSize}
+    newProduct = {...newProduct, sizes:objectSize}
      console.log(newProduct)
     if(!newProduct) return alert("Camplos obligatorios..")
     createProduct(newProduct)
@@ -160,6 +160,7 @@ const clickToEditProduct = (event) => {
                     document.getElementById("name-Product").value = productsObject.nameProduct
                     document.getElementById("priceP").value = productsObject.price
                     document.getElementById("floatingTextarea2").value = productsObject.descripcion
+                    document.getElementById("iEdit").setAttribute("data-product-id-edit-frm",idProduct)   
                     document.getElementById("btnEdit").setAttribute("data-product-id-edit-frm",idProduct)   
                   
                 }
@@ -179,7 +180,7 @@ const clickToEditProduct = (event) => {
 
 document.getElementById("btnEdit").addEventListener("click", (event)=> {
     event.preventDefault()
-console.log(event)
+//console.log(event)
     console.log("Edit... jeje")
     let newProduct = {}
     let objectSize={}
@@ -246,6 +247,7 @@ const printTable = () => {
         
         let iEdit=createNode("i")
         iEdit.classList.add("fas","fa-pencil-alt")
+        iEdit.setAttribute("data-product-id-edit", id)
         
         let buttonEditar = createNode("button")
 
@@ -257,6 +259,7 @@ const printTable = () => {
         
         let iDelete=createNode("i")
         iDelete.classList.add("fas","fa-trash-alt")
+        iDelete.setAttribute("data-product-id-delete", id)
         let buttonDelete = createNode("button")
         buttonDelete.appendChild(iDelete)
         buttonDelete.classList.add("btn","btn-danger")
