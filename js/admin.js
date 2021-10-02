@@ -70,7 +70,8 @@ document.getElementById("btnSubmit").addEventListener("click", (event)=> {
        //agregar size a new object    
     })    
     //console.log(objectSize)
-    newProduct.sizes=objectSize
+    //newProduct.sizes=objectSize
+    newProduct={...newProduct,sizes=objectSize}
      console.log(newProduct)
     if(!newProduct) return alert("Camplos obligatorios..")
     createProduct(newProduct)
