@@ -1,6 +1,7 @@
 
 let productsArray = []
-const inputs = document.querySelectorAll(".myinput")
+const inputs = document.querySelectorAll("#frmProducts input, #frmProducts textarea")
+
 
 const textArea = document.querySelector('#floatingTextarea2')
 const btnI = document.querySelector('#btnSubmit')
@@ -13,46 +14,56 @@ const stock = document.querySelector('#stockP')
 
 let editar = false
 
-let productoObjt = {
-   /* desc: " ",
-    image: " ",
-    name: " ",
-    price: " ",
-    sizeLarge: " ",
-    sizeMedium: " ",
-    sizeShort: " "*/
-}
-
+let productoObjt = {}
 
 const createProduct = (producto) => {
     const xhr = new XMLHttpRequest()
     xhr.addEventListener("readystatechange", () => {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                console.log(xhr.responseText)
+              //  console.log(xhr.responseText)
                 getProducts()
             }
         }
     })
-    xhr.open("POST", "https://productkodemia-default-rtdb.firebaseio.com/products.json", true)
+    xhr.open("POST", "https://tarea-bootcamp-default-rtdb.firebaseio.com/products.json", true)
     xhr.send(JSON.stringify(producto))
 }
 
 
 
 btnI.addEventListener('click', ingresarProducto)
-alert('kslshg')
+
 function ingresarProducto(e) {
     e.preventDefault()
+    let sizes = []
+    let inputsVacios = 0
     inputs.forEach((input) => {
-        productoObjt[input.name] = input.value
-    })
+
+            if (input.classList.contains('form-check-input') ){
+                if (input.checked)
+                sizes = [...sizes, input.name]
+                productoObjt = {...productoObjt,sizes}
+            } else {
+                if (input.value)
+                productoObjt[input.name] = input.value
+                else inputsVacios ++
+            }
+        })
+        if(sizes.length<1) inputsVacios++
+    if(inputsVacios!=0) {
+        alert('campos obligatorios!!!!!')
+
+        console.log(inputsVacios);
+        return
+    }
 
     if (!editar) {
 
 
         createProduct(productoObjt)
     } else {
+
         updatingProduct(productoObjt)
         editar = false
     }
@@ -79,15 +90,15 @@ const getProducts = () => {
                     producto = { ...producto, id:key}
                     productsArray = [...productsArray, producto]
                 }
-                console.log(productsArray);
+            //    console.log(productsArray);
                 printTable(productsArray)
             } else {
-                console.log("Ocurrio un error: ", xhr.status, "Not Found")
+              //  console.log("Ocurrio un error: ", xhr.status, "Not Found")
             }
         }
     })
     // instruccion que me me permite abrir la peticion
-    xhr.open("GET", 'https://productkodemia-default-rtdb.firebaseio.com/products.json', true)
+    xhr.open("GET", "https://tarea-bootcamp-default-rtdb.firebaseio.com/products.json", true)
     xhr.send()
 }
 
@@ -105,7 +116,7 @@ const deleteProduct = (productId) => {
             }
         }
     })
-    xhr.open("DELETE", `https://productkodemia-default-rtdb.firebaseio.com/products/${productId}.json`, true)
+    xhr.open("DELETE", `https://tarea-bootcamp-default-rtdb.firebaseio.com/products/${productId}.json`, true)
     xhr.send(null)
 
 }
@@ -121,24 +132,37 @@ const updatingProduct = (prod) => {
             }
         }
     })
-    xhr.open("PUT", `https://productkodemia-default-rtdb.firebaseio.com/products/${id}.json`, true)
+    xhr.open("PUT", `https://tarea-bootcamp-default-rtdb.firebaseio.com/products/${id}.json`, true)
     xhr.send(JSON.stringify(prod))
 
 }
 function updateProduct(prod) {
+    console.log(prod);
     //para regresar alos input los valores a editar
-    const { name, price, desc, image, id, sizeLarge } = prod;
-    nameInput.value = name
-    priceInput.value = price
-    imageInput.value = image
-    descInput.value = desc
-
+    const { nameProduct, price, descripcion, url, id, sizes } = prod;
+    inputs.forEach( input =>{
+        for (const key in prod) {
+            if(input.name === key){
+                input.value = prod[key]
+            }
+        }
+        if (input.classList.contains('form-check-input')) {
+            sizes.forEach( size => {
+                if(size === input.name){
+                    console.log('igual');
+                    input.checked = true
+                }
+            })
+        }
+    })
     //lleno el objeto con los valores a editar
-    /*productoObjt.name = nameInput
+  /*  productoObjt.nameProduct = nameProduct
     productoObjt.price = price
-    productoObjt.desc = desc
-    productoObjt.image = image*/
+    productoObjt.descripcion = descripcion
+    productoObjt.url = url*/
     productoObjt.id = id
+   /* productoObjt.sizes = sizes
+    productoObjt.stock = stock*/
 
     editar = true
 }
@@ -152,7 +176,8 @@ function printTable(arreglo) {
 
 
     arreglo.forEach((producto, i) => {
-        const { nameProduct, price, desc, url, id, sizeLarge } = producto
+        console.log(producto);
+        const { nameProduct, price, desc, url, id, sizes } = producto
 
         const row = document.createElement('tr')
         const td = document.createElement('td')
@@ -167,13 +192,16 @@ function printTable(arreglo) {
         imgreal.classList.add('img-fluid')
         imgreal.setAttribute('width', 30)
         tdimg.appendChild(imgreal)
-        console.log(imgreal);
+       // console.log(imgreal);
 
         const tdprice = document.createElement('td')
         tdprice.textContent = `$${price}`
 
+
+        let tamaños = ''
+        sizes.forEach(size => tamaños += `${size}, ` )
         const tdsizes = document.createElement('td')
-        tdsizes.textContent = sizeLarge
+        tdsizes.textContent = tamaños || 'no se'
 
         const btnBorrar = document.createElement('button')
         btnBorrar.classList.add('btn', 'btn-danger')
