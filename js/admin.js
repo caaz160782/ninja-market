@@ -1,12 +1,14 @@
 
+alert('esta es clau')
 let productsArray = []
+const formulario = document.querySelector('.form')
 
 const getProducts = () => {
     productsArray = []
     const xhr = new XMLHttpRequest()
     xhr.addEventListener("readystatechange", () => {
         if(xhr.readyState === 4) {
-            if(xhr.status === 200) {                
+            if(xhr.status === 200) {
                 let response = xhr.responseText
                 let productsObject = JSON.parse(response)
              //   console.log(productsObject)
@@ -17,12 +19,12 @@ const getProducts = () => {
                      productsArray = [...productsArray, {...productObject, id:key}]
                   }
                  printTable()
-                 console.log(productsArray) 
+                 console.log(productsArray)
                 }
                  else {
                      printTable()
                  //    console.log("No hay productos u.u")
-                 }            
+                 }
             }
         }
     })
@@ -48,6 +50,7 @@ const createProduct = (productObject) => {
 }
 
 document.getElementById("btnSubmit").addEventListener("click", (event)=> {
+    console.log('siiiiiii')
     event.preventDefault()
     let newProduct = {}
     let objectSize={}
@@ -55,26 +58,27 @@ document.getElementById("btnSubmit").addEventListener("click", (event)=> {
         if(!input.value) {
             newProduct = null
         }else {
-            // console.log(input.name +"=" + input.value)        
+            // console.log(input.name +"=" + input.value)
             // console.log(`${input.name} === "large"`)
             // console.log(input.name === 'large')
             if( input.name=== "Grande" || input.name=== "Mediano" || input.name=== "Chico"){
                if( input.checked)
               {
                objectSize[input.name] = input.value
-             }         
+             }
             }else{
                 newProduct[input.name] = input.value
-            }            
+            }
         }
-       //agregar size a new object    
-    })    
+       //agregar size a new object
+    })
     //console.log(objectSize)
     //newProduct.sizes=objectSize
     newProduct={...newProduct,sizes:objectSize}
   //   console.log(newProduct)
     if(!newProduct) return alert("Campos obligatorios..")
     createProduct(newProduct)
+    formulario.reset()
 })
 
 const putInfo= (idInputFrm,idinfo)=>{
@@ -94,7 +98,7 @@ let miCheckbox = document.getElementById('CheckSize2');
 let miDivSize = document.getElementById('div-large');
 //alert(miCheckbox)
 miCheckbox.addEventListener('click', function() {
-    
+
     if(miCheckbox.checked) {
         console.log( 'El elemento está marcado')
         miDivSize.style.display='true'
@@ -147,12 +151,12 @@ const clickToEditProduct = (event) => {
     event.preventDefault()
     //console.log(event)
     let idProduct = event.target.dataset.productIdEdit
-    //console.log(idProduct)    
+    //console.log(idProduct)
     productsArray = []
     const xhr = new XMLHttpRequest()
     xhr.addEventListener("readystatechange", () => {
         if(xhr.readyState === 4) {
-            if(xhr.status === 200) {                
+            if(xhr.status === 200) {
                 let response = xhr.responseText
                 let productsObject = JSON.parse(response)
                 console.log(productsObject)
@@ -161,19 +165,19 @@ const clickToEditProduct = (event) => {
                     document.getElementById("name-Product").value = productsObject.nameProduct
                     document.getElementById("priceP").value = productsObject.price
                     document.getElementById("floatingTextarea2").value = productsObject.descripcion
-                    document.getElementById("btnEdit").setAttribute("data-product-id-edit-frm",idProduct)   
-                  
+                    document.getElementById("btnEdit").setAttribute("data-product-id-edit-frm",idProduct)
+
                 }
                  else {
-         
+
                      console.log("No hay productos u.u")
-                 }            
+                 }
             }
         }
     })
     xhr.open("GET",`https://productkodemia-default-rtdb.firebaseio.com/products/${idProduct}.json`, true)
     console.log(`https://productkodemia-default-rtdb.firebaseio.com/products/${idProduct}.json`)
-    xhr.send()   
+    xhr.send()
 
 }
 
@@ -189,20 +193,20 @@ console.log(event)
         if(!input.value) {
             newProduct = null
         }else {
-            // console.log(input.name +"=" + input.value)        
+            // console.log(input.name +"=" + input.value)
             // console.log(`${input.name} === "large"`)
             // console.log(input.name === 'large')
             if( input.name=== "Grande" || input.name=== "Mediano" || input.name=== "Chico"){
                if( input.checked)
               {
                objectSize[input.name] = input.value
-             }         
+             }
             }else{
                 newProduct[input.name] = input.value
-            }            
+            }
         }
-       //agregar size a new object    
-    })    
+       //agregar size a new object
+    })
     //console.log(objectSize)
     newProduct.sizes=objectSize
      console.log(newProduct)
@@ -219,14 +223,14 @@ const createNode = (typeElement, text) => {
 }
 
 const printTable = () => {
-    let tBody = document.getElementById("prodctInfo")    
+    let tBody = document.getElementById("prodctInfo")
     while(tBody.lastElementChild) {
         tBody.removeChild(tBody.lastElementChild)
     }
 
     productsArray.forEach((product, index) => {
         let {nameProduct, price, sizes,url,id} = product
-        let tr = document.createElement("tr")        
+        let tr = document.createElement("tr")
 
         let img = createNode("img")
         img.setAttribute("src", url);
@@ -240,36 +244,36 @@ const printTable = () => {
         let tdprice = createNode("td", price)
         let tamanios=""
         for (const key in sizes) {
-            tamanios +=` ${key} `   
-        }     
+            tamanios +=` ${key} `
+        }
         let tdSize = createNode("td", tamanios)
         let tdButton = document.createElement("td")
-        
+
         let iEdit=createNode("i")
         iEdit.classList.add("fas","fa-pencil-alt")
-        
+
         let buttonEditar = createNode("button")
 
         buttonEditar.appendChild(iEdit)
         buttonEditar.classList.add("btn", "btn-primary")
         buttonEditar.setAttribute("data-product-id-edit", id)
-        
-        buttonEditar.addEventListener("click", clickToEditProduct)  
-        
+
+        buttonEditar.addEventListener("click", clickToEditProduct)
+
         let iDelete=createNode("i")
         iDelete.classList.add("fas","fa-trash-alt")
         let buttonDelete = createNode("button")
         buttonDelete.appendChild(iDelete)
         buttonDelete.classList.add("btn","btn-danger")
         buttonDelete.setAttribute("data-product-id-delete", id)
-         buttonDelete.addEventListener("click", clickToDeleteProduct)  
+         buttonDelete.addEventListener("click", clickToDeleteProduct)
          tdButton.appendChild(buttonEditar)
          tdButton.appendChild(buttonDelete)
          tr.appendChild(tdImg)
          tr.appendChild(tdIndex)
          tr.appendChild(tdNameProduct)
          tr.appendChild(tdprice)
-         tr.appendChild(tdSize)        
+         tr.appendChild(tdSize)
          tr.appendChild(tdButton)
          tBody.appendChild(tr)
     })
