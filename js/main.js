@@ -1,5 +1,7 @@
 
-let products = ['lll']
+let products = []
+let articulosCarrito = []
+let contenedorCarrito = document.querySelector('#lista-carrito tbody');
 
 const getProducts = () => {
   const xhr = new XMLHttpRequest()
@@ -83,6 +85,7 @@ const printProducts = arrayProducts => {
                 </div>
               </div>
             </header>
+            <div>
             <section class="card-anime-body">
               <h3>${nameProduct}</h3>
               <p>${descripcion}</p>
@@ -92,8 +95,9 @@ const printProducts = arrayProducts => {
               <div class="heart">
                 <i class="far fa-heart"></i>
               </div>
-              <button data-product-id="${id}" class="btn btn-primary botoncito">Agregar <i class="fas fa-cart-plus"></i></button>
+              <button id="${id}" class="btn btn-primary botoncito">Agregar <i class="fas fa-cart-plus"></i></button>
             </footer>
+           </div>
           </article>
         </div>
         `
@@ -107,6 +111,88 @@ list.addEventListener('click', (e)=>{
   console.log('ooj');
   e.preventDefault()
   if (e.target.classList.contains('botoncito')){
-    alert('lh')
+    const todo = e.target.parentElement.parentElement
+    console.log(todo);
+    const infoProd = {
+
+      nombre: todo.querySelector('h3').textContent,
+      desc: todo.querySelector('p').textContent,
+      precio:todo.querySelector('h4').textContent,
+      id: todo.querySelector('button').id,
+      cantidad:1
+    }
+    let url = products.filter( x =>x.id ===infoProd.id)
+    url.forEach( x => {
+
+      infoProd.url =  x.url;
+    })
+
+    console.log(infoProd);
+
+ if (articulosCarrito.some(x => x.id === infoProd.id)) {
+
+   const productos = articulosCarrito.map(x => {
+     if (x.id === infoProd.id) {
+       x.cantidad++;
+       console.log(x);
+       return x;
+     } else {
+       return x;
+     }
+   })
+   articulosCarrito = [...productos];
+ } else {
+   articulosCarrito = [...articulosCarrito, infoProd];
+ }
+ console.log(articulosCarrito);
+   carritoHTML()
   }
+})
+
+function carritoHTML() {
+
+  vaciarCarrito();
+
+  articulosCarrito.forEach(producto => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+               <td>
+                    <img src="${producto.url}" width=50>
+               </td>
+               <td>${producto.nombre}</td>
+               <td>${producto.precio}</td>
+               <td>${producto.cantidad} </td>
+               <td>
+                    <a href="#" class="btn btn-danger borrando" id="${producto.id}">X</a>
+               </td>
+          `;
+    contenedorCarrito.appendChild(row);
+  });
+
+}
+
+// Elimina los cursos del carrito en el DOM
+function vaciarCarrito() {
+  // forma lenta
+  // contenedorCarrito.innerHTML = '';
+
+
+  // forma rapida (recomendada)
+  while (contenedorCarrito.firstChild) {
+    contenedorCarrito.removeChild(contenedorCarrito.firstChild);
+  }
+}
+
+document.querySelector('.table').addEventListener('click', (e) =>{
+  if (e.target.classList.contains('borrando')){
+
+    let id = e.target.id
+   articulosCarrito = articulosCarrito.filter(x => x.id !== id)
+   console.log(articulosCarrito);
+   carritoHTML()
+  }
+})
+document.querySelector('#vaciar-carrito').addEventListener('click', () =>{
+ articulosCarrito =[]
+ carritoHTML()
 })
